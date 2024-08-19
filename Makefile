@@ -1,6 +1,6 @@
 NAME = philo
 
-SRC = philo.c
+SRC = philo.c utils.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -13,7 +13,7 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS)  -c $< -o $@
 
 clean : 
 	rm -rf $(OBJ)
