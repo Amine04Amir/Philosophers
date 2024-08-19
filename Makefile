@@ -4,7 +4,7 @@ SRC = philo.c
 
 OBJ = $(SRC:.c=.o)
 
-CC = cc
+CC = cc -g -pthread
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)

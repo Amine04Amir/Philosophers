@@ -6,7 +6,7 @@
 /*   By: mamir <mamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:16:01 by mamir             #+#    #+#             */
-/*   Updated: 2024/08/18 23:40:57 by mamir            ###   ########.fr       */
+/*   Updated: 2024/08/19 11:55:18 by mamir            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include <pthread.h>
 
 
-typedef struct s_struct
+typedef struct s_data
 {
     int n;
-    s_struct *next;
-    s_struct *prev;
+    struct t_data *next;
+    struct t_data *prev;
     
-}   t_struct; 
+}   t_data; 
 
 #endif
