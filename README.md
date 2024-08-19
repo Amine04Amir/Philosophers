@@ -1,5 +1,5 @@
 <h1 align="center">Philosophers</h1>
-<he align = "center">I never thought philosophy would be so deadly</h2>
+<h2 align="center">I never thought philosophy would be so deadly</h2>
 
 # Summary :
 
