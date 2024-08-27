@@ -6,15 +6,16 @@
 /*   By: mamir <mamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:17:21 by mamir             #+#    #+#             */
-/*   Updated: 2024/08/19 14:51:11 by mamir            ###   ########.fr       */
+/*   Updated: 2024/08/26 18:29:57 by mamir            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
+int kora = 0;
+pthread_mutex_t mutex;
 
-
-void check_args(int ac, char **av)
+int check_args(int ac, char **av)
 {
     int i = 1;
     int n;
@@ -22,42 +23,62 @@ void check_args(int ac, char **av)
     while (i < ac)
     {
         if (!all_numbers(av[i]))
-           ft_error("error!\n");
+           return 0;
         if (!(ft_atoi(av[1]) >= 1 && ft_atoi(av[1]) <= 200))
-            ft_error("philo error\n");
+            return 0;
         if (!(ft_atoi(av[2]) >= 1 && ft_atoi(av[2]) <= 60))
-            ft_error("time to die\n");
+            return 0;
         if (!(ft_atoi(av[3]) >= 1 && ft_atoi(av[3]) <= 60))
-            ft_error("time to eat\n");
+            return 0;
         if (!(ft_atoi(av[4]) >= 1 && ft_atoi(av[4]) <= 60))
-            ft_error("time to sleep\n");
+            return 0;
         n = ft_atoi(av[i]);
+        i++;
+    }
+    return 1;
+}
+void* routine()
+{
+    pthread_mutex_lock(&mutex);
+    kora++;
+    pthread_mutex_unlock(&mutex);
+    printf("k : %d\n", kora);
+    return NULL;
+}
+
+void create_thread(int n)
+{
+    pthread_t p[n];
+    int i;
+
+    i = 0;
+    while (i < n)
+    {
+        pthread_create(&p[i], NULL, &routine, NULL);
+        printf("thread :%d started\n", i);
+        i++;
+    }
+    i = 0;
+    while (i < n)
+    {
+        pthread_join(p[i], NULL);
+        printf("thread %d finished\n", i);
         i++;
     }
 }
 
-void* routine()
-{
-    printf("hello\n");
-    sleep(2);
-    printf("by\n");
-    return NULL;
-}
-
 int main(int ac, char **av)
 {
-    pthread_t t1, t2;
-
     if (ac == 5)
     {
-        check_args(ac, av);
-        pthread_create(&t1, NULL, &routine, NULL);
-        pthread_create(&t2, NULL, &routine, NULL);
-        pthread_join(t1, NULL);
-        pthread_join(t2, NULL);
-    }
+        if (!check_args(ac, av))
+            return 1;
+        pthread_mutex_init(&mutex, NULL);
+        create_thread(3);
+        pthread_mutex_destroy(&mutex);
+    } 
     else
-        ft_error("Error\nnumber_of_philosophers time_to_die time_to_eat time_to_sleep\n");
+        return 1;
     return 0;
 }
     

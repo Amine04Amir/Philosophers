@@ -6,7 +6,7 @@
 /*   By: mamir <mamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 13:26:52 by mamir             #+#    #+#             */
-/*   Updated: 2024/08/19 14:44:43 by mamir            ###   ########.fr       */
+/*   Updated: 2024/08/23 15:31:30 by mamir            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,3 @@ int all_numbers(const char *str)
     return 1;
 }
 
-void ft_error(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-    {
-        write(2 , &str[i], 1);
-        i++;
-    }
-    exit(1); 
-}

@@ -6,7 +6,7 @@
 /*   By: mamir <mamir@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 23:16:01 by mamir             #+#    #+#             */
-/*   Updated: 2024/08/19 14:40:12 by mamir            ###   ########.fr       */
+/*   Updated: 2024/08/23 15:31:23 by mamir            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_data
 int     ft_atoi(const char *str);
 int     is_digit(char c);
 int     all_numbers(const char *str);
-void    ft_error(char *str);
+
 
 
 #endif
